@@ -117,3 +117,70 @@ $ cd ..
 
 <br>
 
+## Les permissions des fichiers et des répertoires
+
+```bash
+# Afficher les permissions
+$ getfacl <file>
+$ stat <file>
+```
+
+<br>
+
+### Signification rwx/421
+
+```bash
+# r : read
+# w : write
+# x : executable
+
+# 4 : read
+# 2 : write
+# 1 : executable
+```
+
+<br>
+
+### Changement de droits
+
+```bash
+# Lecture et écriture uniquement pour le propriétaire
+$ chmod 600 <file> 
+
+# Application récursive
+$ chmod -R 774 <directory>
+
+# Application des droits en rwx
+# chmod ugo+rwx <file>
+# chmod o-x <file>
+```
+
+<br>
+
+### Changement de propriétaire et de groupe
+
+```bash
+# Changement de propriétaire
+$ chown <user> <file>
+# Changement récursif de propriétaire
+$ chown -R <user> <directory>
+
+# Changement de propriétaire et de groupe
+$ chown <user>:<group> <file>
+```
+
+<br>
+
+### Signification du premier caractère
+
+```bash
+# - : file
+# d : directory
+# c : character device
+# l : symlink
+# p : named pipe
+# s : socket
+# b : block device
+# D : door
+```
+
