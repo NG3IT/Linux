@@ -6,8 +6,8 @@
 
 ## Summary
 
-- Help
-- Filesystem
+- [Help](https://github.com/NG3IT/Linux/blob/main/Linux.md#help)
+- [Filesystem](https://github.com/NG3IT/Linux/blob/main/Linux.md#filesystem)
 -
 
 ---
