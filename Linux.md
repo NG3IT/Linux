@@ -184,3 +184,68 @@ $ chown <user>:<group> <file>
 # D : door
 ```
 
+<br>
+
+---
+
+<br>
+
+## Sudo et su (switch user)
+
+```bash
+# Fichier de configuration
+/etc/sudoers ou /etc/sudoers.d/*
+
+# Utilisation de sudo
+$ sudo <command>
+
+# Utilisation d'un user spécifique
+$ sudo -u <user> <command>
+
+# Afficher les autorisation sudo
+$ sudo -l
+```
+
+<br>
+
+```bash
+# Changement d'utilisateur avec son environnement
+$ su - <user>
+
+# Changement avec l'utilisateur root
+$ su -
+
+# Exécution d'une commande en tant qu'un autre utilisateur
+$ su - <user> -c "<command>"
+```
+
+<br>
+
+---
+
+<br>
+
+## iostat
+
+```bash
+$ iostat
+$ iostat -h
+# Afficher l'heure
+$ iostat -t
+
+# Rafraichissement
+$ iostat <secondes>
+$ iostat 2
+
+# CPU
+$ iostat -c
+
+# Devices
+$ iostat -d
+# Spécifier un device
+$ iostat -p <device>
+$ iostat -p sda
+
+# Spécifier une période de temps pour analyse
+$ iostat 3 5
+```
