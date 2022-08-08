@@ -249,3 +249,75 @@ $ iostat -p sda
 # Spécifier une période de temps pour analyse
 $ iostat 3 5
 ```
+
+<br>
+
+---
+
+<br>
+
+## Vi/Vim
+
+```bash
+# Mode
+i -> Insert mode
+escap -> Classic mode
+Ctrl + V -> Visual mode
+
+# Sauvegarder et quitter le fichier
+:wq
+# Quitter sans sauvegarder
+:q!
+
+# Déplacement à la première ligne
+gg
+# Déplacement à la dernière ligne
+G
+
+# Recherche de patterns
+/<pattern>
+# Pattern suivant
+n
+
+# Afficher les numéros de lignes
+:set number
+# Déplacement vers une ligne spécifique
+:<numéro_de_ligne>
+# Ouvrir le fichier à une ligne spécifique
+# Vim +10 <file>
+
+# Annuler l'action précédente
+:undo
+# Rejouer l'action précédente
+:redo
+
+# Copier une ligne
+yy
+# Coller une ligne
+p
+# Copier un ensemble de lignes
+<nombre_de_lignes>yy
+4yy
+# Copier un ensemble de lignes spécifiques
+:<première_ligne>,<dernière_ligne>y
+:11,15y
+
+# Suppression de la ligne
+dd 
+# Suppression d'une ligne spécifique
+dd +<numéro_de_ligne>
+dd +10
+
+# Remplacement d'un pattern
+:s/<pattern_à_remplacer>/<nouveau_pattern>/g
+# Remplacement de plusieurs patterns
+:%s/<patterns_à_remplacer>/<nouveaux_patterns>/g
+
+# Modification de plusieurs lignes
+# Visual mode
+Ctrl + v
+# Sélectionner les valeurs/lignes
+# Shift + i
+# Faire les modifications
+# Echap
+```
