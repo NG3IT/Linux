@@ -1,37 +1,326 @@
-## Welcome to GitHub Pages
+# Linux administration
 
-You can use the [editor on GitHub](https://github.com/NG3IT/Linux/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+---
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<br>
 
-### Markdown
+## Summary
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- [Help](https://github.com/NG3IT/Linux/blob/main/Linux.md#help)
+- [Filesystem](https://github.com/NG3IT/Linux/blob/main/Linux.md#filesystem)
+- [Les permissions des fichiers et des répertoires](https://github.com/NG3IT/Linux/blob/main/Linux.md#les-permissions-des-fichiers-et-des-r%C3%A9pertoires)
+- [Sudo et su (switch user)](https://github.com/NG3IT/Linux/blob/main/Linux.md#sudo-et-su-switch-user)
+- [iostat](https://github.com/NG3IT/Linux/blob/main/Linux.md#iostat)
+- [Vi/Vim](https://github.com/NG3IT/Linux/blob/main/Linux.md#vivim)
+- [Filesystem](https://github.com/NG3IT/Linux/blob/main/Linux.md#filesystem)
+---
 
-```markdown
-Syntax highlighted code block
+<br>
 
-# Header 1
-## Header 2
-### Header 3
+## Help
 
-- Bulleted
-- List
+```bash
+# Manuel
+$ man <command>
+# Obtenir les raccourcis -> h | H
 
-1. Numbered
-2. List
+# Manuel avec pattern
+$ man -k <pattern>
+$ man -k memory
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+# Navigation
+/<pattern> -> Recherche un pattern
+n -> Prochaine occurence
+N -> Précédente occurence
+G -> Bas de page
+g -> Début de page
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+<br>
 
-### Jekyll Themes
+---
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/NG3IT/Linux/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+<br>
 
-### Support or Contact
+## Filestystem
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Filesystem Hierarchy Standard (FHS) : standard Linux (v3 date de 2015)
+
+### Hiérarchie du système de fichier
+
+```bash
+# Utile pour le boot
+/boot
+# Binaires
+/bin
+# Binaires administrateurs
+/sbin
+# Périphériques physiques ou virtuels
+/dev
+# Configuration
+/etc
+# Ensemble des home
+/home
+# Librairies
+/lib
+# Programmes optionnels
+/opt
+# Home de root
+/root
+# Répertoire de binaire "non nécessaire au système" (Unix System Resources) 
+/usr
+# Données (logs, bdd, etc.)
+/var
+# Temporaire
+/tmp
+# Information spécifiques du noyau/système
+/proc
+# Information spécifiques du noyau/système
+/sys
+# Récupération de fs
+/lost+found
+# Montages temporaires
+/mnt
+# Montages temporaires
+/media
+```
+
+<br>
+
+### ls - list directory content
+
+```bash
+# Afficher les fichiers cachés
+$ ls -la 
+# Classer par date de modification
+$ ls -lt
+# Human readable 
+$ ls -lh
+# Mode liste avec seulement le nom
+$ ls -1
+# Du plus récent au plus récent
+$ ls -larth
+```
+
+<br>
+
+### cd - change directory
+
+```bash
+# Répertoire home
+$ cd
+$ cd ~
+# Répertoire parent
+$ cd ..
+```
+
+<br>
+
+---
+
+<br>
+
+## Les permissions des fichiers et des répertoires
+
+```bash
+# Afficher les permissions
+$ getfacl <file>
+$ stat <file>
+```
+
+<br>
+
+### Signification rwx/421
+
+```bash
+# r : read
+# w : write
+# x : executable
+
+# 4 : read
+# 2 : write
+# 1 : executable
+```
+
+<br>
+
+### Changement de droits
+
+```bash
+# Lecture et écriture uniquement pour le propriétaire
+$ chmod 600 <file> 
+
+# Application récursive
+$ chmod -R 774 <directory>
+
+# Application des droits en rwx
+# chmod ugo+rwx <file>
+# chmod o-x <file>
+```
+
+<br>
+
+### Changement de propriétaire et de groupe
+
+```bash
+# Changement de propriétaire
+$ chown <user> <file>
+# Changement récursif de propriétaire
+$ chown -R <user> <directory>
+
+# Changement de propriétaire et de groupe
+$ chown <user>:<group> <file>
+```
+
+<br>
+
+### Signification du premier caractère
+
+```bash
+# - : file
+# d : directory
+# c : character device
+# l : symlink
+# p : named pipe
+# s : socket
+# b : block device
+# D : door
+```
+
+<br>
+
+---
+
+<br>
+
+## Sudo et su (switch user)
+
+```bash
+# Fichier de configuration
+/etc/sudoers ou /etc/sudoers.d/*
+
+# Utilisation de sudo
+$ sudo <command>
+
+# Utilisation d'un user spécifique
+$ sudo -u <user> <command>
+
+# Afficher les autorisation sudo
+$ sudo -l
+```
+
+<br>
+
+```bash
+# Changement d'utilisateur avec son environnement
+$ su - <user>
+
+# Changement avec l'utilisateur root
+$ su -
+
+# Exécution d'une commande en tant qu'un autre utilisateur
+$ su - <user> -c "<command>"
+```
+
+<br>
+
+---
+
+<br>
+
+## iostat
+
+```bash
+$ iostat
+$ iostat -h
+# Afficher l'heure
+$ iostat -t
+
+# Rafraichissement
+$ iostat <secondes>
+$ iostat 2
+
+# CPU
+$ iostat -c
+
+# Devices
+$ iostat -d
+# Spécifier un device
+$ iostat -p <device>
+$ iostat -p sda
+
+# Spécifier une période de temps pour analyse
+$ iostat 3 5
+```
+
+<br>
+
+---
+
+<br>
+
+## Vi/Vim
+
+```bash
+# Mode
+i -> Insert mode
+escap -> Classic mode
+Ctrl + V -> Visual mode
+
+# Sauvegarder et quitter le fichier
+:wq
+# Quitter sans sauvegarder
+:q!
+
+# Déplacement à la première ligne
+gg
+# Déplacement à la dernière ligne
+G
+
+# Recherche de patterns
+/<pattern>
+# Pattern suivant
+n
+
+# Afficher les numéros de lignes
+:set number
+# Déplacement vers une ligne spécifique
+:<numéro_de_ligne>
+# Ouvrir le fichier à une ligne spécifique
+# Vim +10 <file>
+
+# Annuler l'action précédente
+:undo
+# Rejouer l'action précédente
+:redo
+
+# Copier une ligne
+yy
+# Coller une ligne
+p
+# Copier un ensemble de lignes
+<nombre_de_lignes>yy
+4yy
+# Copier un ensemble de lignes spécifiques
+:<première_ligne>,<dernière_ligne>y
+:11,15y
+
+# Suppression de la ligne
+dd 
+# Suppression d'une ligne spécifique
+dd +<numéro_de_ligne>
+dd +10
+
+# Remplacement d'un pattern
+:s/<pattern_à_remplacer>/<nouveau_pattern>/g
+# Remplacement de plusieurs patterns
+:%s/<patterns_à_remplacer>/<nouveaux_patterns>/g
+
+# Modification de plusieurs lignes
+# Visual mode
+Ctrl + v
+# Sélectionner les valeurs/lignes
+# Shift + i
+# Faire les modifications
+# Echap
+```
