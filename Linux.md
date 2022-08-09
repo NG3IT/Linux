@@ -228,6 +228,93 @@ $ su - <user> -c "<command>"
 
 <br>
 
+## Utilisateurs et groupes
+
+UID -> User ID
+
+```bash
+# UID
+# 0 -> root
+# 0 - 100 -> uid statique réservés pour le système
+# > 1000 -> uid dynamique réservés pour le système
+# < 1000 -> autres
+# nobody -> 
+
+# Lister les utilisateurs
+$ cat /etc/passwd
+$ getent passwd
+$ compgen -u
+
+# Ajouter un utilisateur
+$ useradd <'utilisateur
+$ useradd -s <shell> -c <commentaire> -d <home> -g <groupe> -G <groupas_additionnels> -k <skelette>
+$ passwd <utilisateur>
+
+# Fichier de configuration de useradd
+$ cat /etc/default/useradd
+
+# Créer des utilisateurs en cascade (ajout dans /etc/passwd)
+$ newusers
+
+# Supprimer un utilisateur
+$ deluser <user>
+$ deluser --remove-home
+
+# Gestion des utilisateurs
+# Statut de l'utilisateur
+$ passwd -S <utilisateur>
+# Force l'expiration du mot de passe
+$ passwd -e <utilisateur>
+# Locker un utilisateur
+$ passwd -l <utilisateur>
+# Unlocker un utilisateur
+$ password -u <utilisateur>
+```
+
+Mot de passe
+
+```bash
+# Exemple
+$ openssl <mode> <encodage> <nombre_de_caractères>
+$ openssl rand -base64 12
+```
+
+
+GID -> Group ID
+
+```bash
+# GID
+# 0 -> root
+# 100 -> groupe par défault "users"
+# < 1000 -> groupes utilisateurs
+
+# Lister les groupes
+$ cat /etc/group
+$ getent group
+
+# Ajouter des groupes
+$ groupadd <groupe>
+# Forcer le GID
+$ groupadd -g <GID> <groupe>
+# Créer un groupe système
+$ groupadd -r <groupe>
+
+# Supprimer des groupe
+$ groupdel <groupe>
+
+# Changer le groupe auquel appartient un fichier
+$ chgrp <groupe> <fichier>
+
+# Ajouter un utilisateur à un groupe
+$ usermod -aG <groupe> <utilisateur>
+```
+
+<br>
+
+---
+
+<br>
+
 ## iostat
 
 ```bash
@@ -324,3 +411,11 @@ Ctrl + v
 # Faire les modifications
 # Echap
 ```
+
+<br>
+
+---
+
+<br>
+
+##
