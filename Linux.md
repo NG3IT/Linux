@@ -12,7 +12,7 @@
 - [Sudo et su (switch user)](https://github.com/NG3IT/Linux/blob/main/Linux.md#sudo-et-su-switch-user)
 - [iostat](https://github.com/NG3IT/Linux/blob/main/Linux.md#iostat)
 - [Vi/Vim](https://github.com/NG3IT/Linux/blob/main/Linux.md#vivim)
-- [Filesystem](https://github.com/NG3IT/Linux/blob/main/Linux.md#filesystem)
+
 ---
 
 <br>
