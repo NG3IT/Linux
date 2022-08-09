@@ -382,6 +382,15 @@ $ dd if=/dev/random of=/dev/sdb status=progress
 
 <br>
 
+## Simulation d'écriture sur disque (dd)
+
+```bash
+# Simulation de 2Go d'écriture
+$ dd if=/dev/zero of=/tmp/test.txt bs=1G status=progress count=2 
+```
+
+<br>
+
 ## Vi/Vim
 
 ```bash
