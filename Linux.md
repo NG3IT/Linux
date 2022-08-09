@@ -347,6 +347,39 @@ $ iostat 3 5
 
 <br>
 
+## Sauvegarde et restauration d'un disque (dd)
+
+```bash
+# Copie d'un disque vers un autre
+$ dd if=<disque> of=<disque> status=progress
+$ dd if=/dev/sdb of=/dev/sdc status=progress
+
+# Copie d'un disque vers un fichier image
+$ dd if=<disque> of=<image> status=progress
+$ dd if=/dev/sdb of=image.img status=progress
+$ dd if=image.img of=/dev/sdb status=progress
+```
+
+<br>
+
+---
+
+<br>
+
+## Cleaner un disque (dd)
+
+```bash
+# Démonter le volume avant le clean de préférence
+$ dd if=/dev/zero of=/dev/sdb status=progress
+$ dd if=/dev/random of=/dev/sdb status=progress
+```
+
+<br>
+
+---
+
+<br>
+
 ## Vi/Vim
 
 ```bash
