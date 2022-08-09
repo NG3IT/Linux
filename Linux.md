@@ -13,6 +13,8 @@
 - [iostat](https://github.com/NG3IT/Linux/blob/main/Linux.md#iostat)
 - [Vi/Vim](https://github.com/NG3IT/Linux/blob/main/Linux.md#vivim)
 - [Utilisateurs et groupes](https://github.com/NG3IT/Linux/blob/main/Linux.md#utilisateurs-et-groupes)
+- [Sauvegarde et restauration d'un disque (dd)](https://github.com/NG3IT/Linux/blob/main/Linux.md#sauvegarde-et-restauration-dun-disque-dd)
+- [Cleaner un disque (dd)](https://github.com/NG3IT/Linux/blob/main/Linux.md#cleaner-un-disque-dd)
 
 ---
 
