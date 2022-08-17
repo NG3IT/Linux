@@ -90,6 +90,41 @@ Filesystem Hierarchy Standard (FHS) : standard Linux (v3 date de 2015)
 
 <br>
 
+### Information about file
+
+```bash
+$ file <file_name>
+# ls with append indicator about type of files, directory, etc.
+$ ls -F 
+```
+
+<br> 
+
+### Symbolic lynk
+
+```bash 
+ln -s <file> <link>
+```
+
+
+### Specific file
+
+```bash
+# Create special file
+# Bloc : use to access to device works with blocs
+# Character : use to access octets per octets
+# FIFO (tubes, pipes) : use to transfer data through two process with 
+# Socket : use to transfer data through two process with network protocols
+$ mknod
+```
+
+<br>
+
+---
+
+
+---
+
 ### ls - list directory content
 
 ```bash
@@ -463,4 +498,20 @@ Ctrl + v
 
 <br>
 
-##
+## Processus 
+
+<br>
+
+### Process status
+
+```bash
+# User mode -> execute as user mode
+# Kernel mode -> execute as kernel mode
+# Waiting
+# Sleeping
+# Runnable -> ready to execute
+# Virtual memory -> sleeping under the swap
+# New process
+# Zombie -> end of process (don't stop)
+
+```
